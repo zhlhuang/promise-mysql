@@ -1,0 +1,28 @@
+{
+  "name": "promise-mysql",
+  "version": "0.0.1",
+  "description": "the module base on node-mysql like thinkphp ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhlhuang/promise-mysql.git"
+  },
+  "keywords": [
+    "nodejs",
+    "mysql",
+    "promise"
+  ],
+  "author": "zhlhuang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhlhuang/promise-mysql/issues"
+  },
+  "homepage": "https://github.com/zhlhuang/promise-mysql#readme",
+  "devDependencies": {
+    "mysql": "^2.9.0",
+    "promise": "^7.0.4"
+  }
+}

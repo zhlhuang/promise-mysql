@@ -1,7 +1,7 @@
 {
-  "name": "promise-mysql",
-  "version": "0.0.1",
-  "description": "the module base on node-mysql like thinkphp ",
+  "name": "promise-mysql-zhl",
+  "version": "0.0.2",
+  "description": "the module base on mysql like thinkphp",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

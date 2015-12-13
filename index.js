@@ -16,7 +16,11 @@ function mysqlBase(table){
     this.fields ='*' // the fields we need ,default is all
     this.table=table // table name
     
-    this.sqlWhere=' ' // query where 
+    this.sqlWhere=' ' // query where
+    this.SqlGroup=''
+    this.Sqlorder=''
+    this.Sqljoin=''
+    this.SqlPage=''
 }
 
 /**
@@ -30,7 +34,10 @@ mysqlBase.prototype.configure =function(config){
     this.conn=mysql.createConnection(this.config)
 }
 
-
+mysqlBase.prototype.field = function(fields) {
+    this.fields = fields;
+    return this; //返回this之后，我们就可以用连贯操作
+};
 
 /**
  * add query sql where 
@@ -52,7 +59,40 @@ mysqlBase.prototype.where = function(where) {
 	return this  // return this Object 
 };
 
+/**
+ * join  
+ * @param join (sql)  eg: qc_xxx on qc_xxx.user_id=user.id
+ * @return {Object} this 
+ */
 
+mysqlBase.prototype.join = function(join) {
+    this.Sqljoin = " join " + join
+    return this
+}
+
+
+mysqlBase.prototype.group = function(group) {
+    this.SqlGroup = " GROUP  BY " + group
+    return this
+}
+mysqlBase.prototype.order = function(order) {
+    this.Sqlorder = " ORDER BY " + order
+    return this
+}
+
+
+/**
+ * page  
+ * @param pagenow pagesize
+ * @return {Object} this 
+ */
+
+mysqlBase.prototype.page = function(pagenow, pagesize) {
+    pagenow = pagenow ? pagenow : 1;
+    pagesize = pagesize ? pagesize : 10;
+    this.SqlPage = " limit " + (pagenow - 1) * pagesize + "," + pagesize;
+    return this;
+}
 
 
 /**
@@ -61,7 +101,7 @@ mysqlBase.prototype.where = function(where) {
  */
 
 mysqlBase.prototype.getSql = function() {
-	return this.sql +this.sqlWhere 
+	return this.sql + this.Sqljoin + this.sqlWhere + this.SqlGroup + this.Sqlorder + this.SqlPage;
 };
 
 

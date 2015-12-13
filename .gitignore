@@ -1,3 +1,4 @@
 node_modules/
+.coding-ide/
 npm-debug.log
 use.js
